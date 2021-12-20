@@ -1,0 +1,29 @@
+<input type="text" class="form-control mb-4" placeholder="Ara..." [(ngModel)]="searchText">
+<small class="text-muted" *ngIf="searchText">Aradığınız kelime : {{searchText}}</small>
+<div *ngIf="movies.length==0" class="alert alert-warning" role="alert">
+  {{message}}
+</div>
+<h2 *ngIf="movies.length>0">{{title}}</h2>
+
+<div *ngIf="movies.length>0" class="alert alert-warning" role="alert">
+   {{movies.length}} adet film bulundu.
+</div>
+
+<div *ngFor="let item of movies | searchFilter:searchText " class="card mb-3" style="max-width: 540px;">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img src="/assets/img/{{item.Image}}" class="img-fluid rounded-start">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">{{item.Title | titlecase}}</h5>
+          <p class="card-text">{{item.Description | summary}}</p>
+          <p class="card-text"><small class="text-muted">{{item.DatePublished | date}}</small></p>
+          <button class="btn btn-info">Details</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
