@@ -1,6 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Category } from '../models/category';
-import { CategoryRepository } from '../models/category.repository';
+import { CategoryService } from '../services/category.service';
 
 @Component({
   selector: 'app-category',
@@ -10,14 +11,27 @@ import { CategoryRepository } from '../models/category.repository';
 export class CategoryComponent implements OnInit {
 
   categories:Category[]=[]
-  categoryRepository:CategoryRepository;
-  constructor() { 
-    this.categoryRepository=new CategoryRepository();
-    this.categories=this.categoryRepository.getCategories()
+  selectedCategory:Category=null;
+  displayAll:boolean=true;
+  categoryService:CategoryService;
+  constructor(private http:HttpClient) { 
+     this.categoryService=new CategoryService(this.http);
   }
 
 
   ngOnInit(): void {
+    this.categoryService.getList().subscribe(p=>{
+      this.categories=p;
+    })
+  }
+  selectCategory(category?:Category){
+    if(category){
+      this.selectedCategory=category;
+      this.displayAll=false;
+    }else{
+      this.displayAll=true;
+    }
+   
   }
 
 

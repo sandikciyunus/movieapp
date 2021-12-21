@@ -1,3 +1,7 @@
+<div *ngIf="errorMessage" class="alert alert-danger">
+{{errorMessage}}
+</div>
+
 <input type="text" class="form-control mb-4" placeholder="Ara..." [(ngModel)]="searchText">
 <small class="text-muted" *ngIf="searchText">Aradığınız kelime : {{searchText}}</small>
 <div *ngIf="movies.length==0" class="alert alert-warning" role="alert">
@@ -18,8 +22,10 @@
         <div class="card-body">
           <h5 class="card-title">{{item.Title | titlecase}}</h5>
           <p class="card-text">{{item.Description | summary}}</p>
-          <p class="card-text"><small class="text-muted">{{item.DatePublished | date}}</small></p>
-          <button class="btn btn-info">Details</button>
+          <div>
+            <a routerLink="/movies/{{item.id}}" class="btn btn-info">Details</a>
+            <button (click)="addToList($event,item)" class="btn btn-primary ms-1">Listeye Ekle</button>
+          </div>
         </div>
       </div>
     </div>

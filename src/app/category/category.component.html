@@ -1,3 +1,4 @@
-<ul class="list-group">
-    <li *ngFor="let item of categories" class="list-group-item">{{item.Name}}</li>
-  </ul>
+<div class="list-group">
+  <a  routerLink="/movies"  routerLinkActive="router-link-active"  (click)="selectCategory()" [class.active]="displayAll" class="list-group-item list-group-item-action active">Tüm Kategoriler</a>
+  <a *ngFor="let item of categories" routerLink="/movies/category/{{ item.Id }}" routerLinkActive="router-link-active"  (click)="selectCategory(item)" [class.active]="!displayAll && selectedCategory.Id==item.Id"  class="list-group-item list-group-item-action">{{item.Name}}</a>
+</div>

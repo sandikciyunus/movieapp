@@ -11,6 +11,9 @@ import { FooterComponent } from './footer/footer.component';
 import { SummaryPipe } from './summary.pipe';
 import { SearchFilterPipe } from './search-filter.pipe';
 import { FormsModule } from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
+import { AppRoutingModule } from './app-routing.module';
+import { MovieCreateComponent } from './movie-create/movie-create.component';
 
 @NgModule({
   declarations: [
@@ -23,10 +26,13 @@ import { FormsModule } from '@angular/forms';
     FooterComponent,
     SummaryPipe,
     SearchFilterPipe,
+    MovieCreateComponent,
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

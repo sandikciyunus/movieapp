@@ -1,0 +1,75 @@
+{
+  "movies": [
+    {
+      "id": 1,
+      "Title": "Test 1",
+      "Description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius accusantium id dolores, eaque corporis consequuntur, possimus, incidunt esse recusandae nam amet mollitia suscipit aliquid laborum voluptates iure maxime ducimus dolorem?",
+      "Image": "1.jpeg",
+      "categoryId": 1
+    },
+    {
+      "id": 2,
+      "Title": "Test 2",
+      "Description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius accusantium id dolores, eaque corporis consequuntur, possimus, incidunt esse recusandae nam amet mollitia suscipit aliquid laborum voluptates iure maxime ducimus dolorem?",
+      "Image": "2.jpeg",
+      "categoryId": 2
+    },
+    {
+      "id": 3,
+      "Title": "Test 3",
+      "Description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius accusantium id dolores, eaque corporis consequuntur, possimus, incidunt esse recusandae nam amet mollitia suscipit aliquid laborum voluptates iure maxime ducimus dolorem?",
+      "Image": "3.jpeg",
+      "categoryId": 4
+    },
+    {
+      "id": 4,
+      "Title": "Test 4",
+      "Description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius accusantium id dolores, eaque corporis consequuntur, possimus, incidunt esse recusandae nam amet mollitia suscipit aliquid laborum voluptates iure maxime ducimus dolorem?",
+      "Image": "4.jpeg",
+      "categoryId": 4
+    },
+    {
+      "id": 5,
+      "Title": "Test 5",
+      "Description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius accusantium id dolores, eaque corporis consequuntur, possimus, incidunt esse recusandae nam amet mollitia suscipit aliquid laborum voluptates iure maxime ducimus dolorem?",
+      "Image": "5.jpeg",
+      "categoryId": 5
+    },
+    {
+      "Title": "ghg",
+      "Description": "jhjhhj",
+      "Image": "2.jpeg",
+      "categoryId": 3,
+      "id": 6
+    },
+    {
+      "Title": "jh",
+      "Description": "kjllk",
+      "Image": "2.jpeg",
+      "categoryId": 3,
+      "id": 7
+    }
+  ],
+  "categories": [
+    {
+      "Id": 1,
+      "Name": "Macera"
+    },
+    {
+      "Id": 2,
+      "Name": "Romantik"
+    },
+    {
+      "Id": 3,
+      "Name": "Komedi"
+    },
+    {
+      "Id": 4,
+      "Name": "Dram"
+    },
+    {
+      "Id": 5,
+      "Name": "Şavaş"
+    }
+  ]
+}
