@@ -15,6 +15,7 @@ export class MoviesComponent implements OnInit {
   message="Film bulunamadı.";
   title="Film Listesi";
   movies:Movie[]=[];
+  id:number;
   errorMessage:any;
   alertifyService:AlertifyService;
   movieService:MovieService;
@@ -46,5 +47,19 @@ export class MoviesComponent implements OnInit {
    }
   }
 
+ deleteMovie(id:number) {
+   var result=confirm("Silmek istediğinize emin misiniz?");
+   if(result){
+      this.movieService.deleteMovie(id).subscribe(p=>{
+    window.location.reload();
+  })
+   }
+   else{
+     alert("Silme işlemi iptal edildi");
+   }
+ 
+}
 
 }
+
+

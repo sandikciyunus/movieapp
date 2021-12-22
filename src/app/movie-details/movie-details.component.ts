@@ -20,6 +20,7 @@ export class MovieDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(p=>{
       this.movieService.getMovieDetail(p["id"]).subscribe(p=>{
+        console.log(p);
         this.movie=p;
       })
     });

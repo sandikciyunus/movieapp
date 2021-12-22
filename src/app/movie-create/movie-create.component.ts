@@ -1,11 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Category } from '../models/category';
 import { Movie } from '../models/movie';
 import { AlertifyService } from '../services/alertify.service';
 import { CategoryService } from '../services/category.service';
 import { MovieService } from '../services/movie.service';
+import { ImageValidator } from '../validators/image.validator';
 
 @Component({
   selector: 'app-movie-create',
@@ -18,7 +19,6 @@ export class MovieCreateComponent implements OnInit {
   categoryService:CategoryService;
   movieService:MovieService;
   movie:Movie;
-  model:any={};
   alertifService:AlertifyService;
   constructor(private http:HttpClient) { 
     this.categoryService=new CategoryService(http);
@@ -31,22 +31,45 @@ export class MovieCreateComponent implements OnInit {
       this.categories=p
     })
   }
-  createMovie(form:NgForm){
-    console.log(form);
-     /*const movie={
-      Title:this.model.Title,
-      Description:this.model.Description,
-      Image:this.model.Image,
-      categoryId:Number(this.model.categoryId)
+
+  movieForm=new FormGroup({
+      Title:new FormControl("",[Validators.required,Validators.minLength(5)]),
+  Description:new FormControl("",[Validators.required]),
+  Image:new FormControl("",[Validators.required,ImageValidator.isValidExtention]),
+  categoryId:new FormControl("-1",[Validators.required])
+  })
+
+  get title(){
+    return this.movieForm.get("Title");
+  }
+
+
+ 
+  createMovie(){
+     const movie={
+      id: 0,
+      Title:this.movieForm.value.Title,
+      Description:this.movieForm.value.Description,
+      Image:this.movieForm.value.Image,
+      IsPopular: false,
+      DatePublished: new Date(),
+      CategoryId:Number(this.movieForm.value.categoryId)
      }
      this.movieService.createMovie(movie).subscribe(p=>{
        window.location.href="/";
-     })*/
-     
+     })
+    
   }
 
-  log(value:any){
-    console.log(value);
+
+
+  clearForm(){
+    this.movieForm.patchValue({
+      Title:"",
+      Description:"",
+      Image:"",
+      categoryId:""
+    })
   }
 
 }

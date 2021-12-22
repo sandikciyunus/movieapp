@@ -1,25 +1,38 @@
 <h1>Create Movie</h1>
 
-<form #form="ngForm" (ngSubmit)="createMovie(form)">
+<form [formGroup]="movieForm" (ngSubmit)="createMovie()">
     <div class="mb-3">
    <label for="title" class="form-label">Title</label>
-   <input #title="ngModel" type="text" required minlength="5" (change)="log(title)" [(ngModel)]="model.Title"  class="form-control" name="Title">
+   <input  type="text"  class="form-control" name="Title" formControlName="Title">
+   <div class="alert alert-danger" *ngIf="movieForm.get('Title').invalid && movieForm.get('Title').touched">
+    <p *ngIf="title.errors['required']">Gereki alan</p>
+    <p *ngIf="title.errors['minlength']">Min 5 karakter girmelisiniz.</p>
+   </div>
     </div>
     <div class="mb-3">
         <label for="description" class="form-label">Description</label>
-       <textarea  class="form-control"  [(ngModel)]="model.Description" name="Description"></textarea>
+       <textarea  class="form-control"  name="Description" formControlName="Description"></textarea>
+       <div class="alert alert-danger" *ngIf="movieForm.get('Description').invalid && movieForm.get('Description').touched">
+        <p *ngIf="movieForm.get('Description').errors['required']">Gereki alan</p>
+       </div>
          </div>
 
          <div class="mb-3">
             <label for="image" class="form-label">Image</label>
-            <input  type="text" [(ngModel)]="model.Image" class="form-control" name="Image">
+            <input type="text"  class="form-control" name="Image" formControlName="Image">
+            <div class="alert alert-danger" *ngIf="movieForm.get('Image').invalid && movieForm.get('Image').touched">
+              <p *ngIf="movieForm.get('Image').errors['required']">Gereki alan</p>
+              <p *ngIf="movieForm.get('Image').errors['wrongExtension']">Hatalı resim uzantısı.</p>
+             </div>
              </div>
              <div class="mb-3">
                 <label for="categoryId" class="form-label">Category</label>
-               <select class="form-control" [(ngModel)]="model.categoryId"  id="categoryId" name="categoryId">
+               <select class="form-select" formControlName="categoryId" id="categoryId" name="categoryId">
+                 <option selected value="-1">Seçiniz</option>
                    <option *ngFor="let item of categories" value="{{item.Id}}">{{item.Name}}</option>
                </select>
                  </div>
-                 <button class="btn btn-primary">Create</button>
+                 <button [disabled]="movieForm.invalid" type="submit" class="btn btn-primary">Create</button>
+                 <button type="button" (click)="clearForm()" class="btn btn-warning m-2">Clear</button>
 
 </form>

@@ -25,6 +25,7 @@
           <div>
             <a routerLink="/movies/{{item.id}}" class="btn btn-info">Details</a>
             <button (click)="addToList($event,item)" class="btn btn-primary ms-1">Listeye Ekle</button>
+            <button (click)="deleteMovie(item.id)" class="btn btn-danger ms-1">Sil</button>
           </div>
         </div>
       </div>

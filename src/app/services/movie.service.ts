@@ -11,7 +11,7 @@ export class MovieService {
 
   getList(categoryId?:number):Observable<Movie[]>{
     if(categoryId){
-      return this.http.get<Movie[]>("http://localhost:3000/movies?categoryId="+categoryId)
+      return this.http.get<Movie[]>("http://localhost:3000/movies?CategoryId="+categoryId)
     }
     return this.http.get<Movie[]>("http://localhost:3000/movies")
   }
@@ -26,5 +26,9 @@ export class MovieService {
       'Cache-Control': 'no-cache'
     });
     return this.http.post<Movie>("http://localhost:3000/movies",movie,{headers:httpHeaders })
+  }
+
+  deleteMovie(id:number){
+    return this.http.delete("http://localhost:3000/movies/"+id)
   }
 }

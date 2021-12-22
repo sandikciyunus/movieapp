@@ -10,7 +10,7 @@ import { MovieDetailsComponent } from './movie-details/movie-details.component';
 import { FooterComponent } from './footer/footer.component';
 import { SummaryPipe } from './summary.pipe';
 import { SearchFilterPipe } from './search-filter.pipe';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { MovieCreateComponent } from './movie-create/movie-create.component';
@@ -32,7 +32,8 @@ import { MovieCreateComponent } from './movie-create/movie-create.component';
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
